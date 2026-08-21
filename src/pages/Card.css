@@ -1,0 +1,199 @@
+.card-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.message-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 30px;
+  max-width: 650px;
+  width: 90%;
+  min-height: 500px;
+  max-height: 80vh;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15),
+              0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+  animation: slideUp 0.8s ease-out;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  border-bottom: 3px solid #ff6b6b;
+  padding-bottom: 15px;
+}
+
+.card-header h2 {
+  font-size: 24px;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.header-emoji {
+  font-size: 28px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.message-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 5px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.message-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.message-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.message-content::-webkit-scrollbar-thumb {
+  background: #ff6b6b;
+  border-radius: 10px;
+}
+
+.typing-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #636e72;
+  font-size: 14px;
+  margin-top: 10px;
+  animation: fadeInOut 1.5s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.next-btn {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: buttonAppear 0.5s ease-out;
+  margin-top: 10px;
+  align-self: center;
+}
+
+@keyframes buttonAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.next-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+}
+
+.next-btn:active {
+  transform: scale(0.95);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .message-card {
+    padding: 25px;
+    max-width: 95%;
+    min-height: 400px;
+  }
+
+  .card-header h2 {
+    font-size: 20px;
+  }
+
+  .message-content {
+    font-size: 16px;
+  }
+
+  .header-emoji {
+    font-size: 22px;
+  }
+  /* Add this to your existing Card.css */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+/* Additional balloon-themed styles */
+.card-header .header-emoji {
+  animation: floatBalloonHeader 3s ease-in-out infinite;
+}
+
+@keyframes floatBalloonHeader {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(5deg);
+  }
+}
+
+/* Anivesh credit special styling */
+.message-content .typewriter-text:last-child {
+  background: linear-gradient(135deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* Balloon decorations on card */
+.message-card {
+  border: 2px solid transparent;
+  background-image: linear-gradient(white, white), 
+                    linear-gradient(135deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff);
+  background-origin: padding-box, border-box;
+  background-clip: padding-box, border-box;
+}
+}

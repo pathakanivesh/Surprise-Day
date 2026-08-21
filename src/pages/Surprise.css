@@ -1,0 +1,342 @@
+/* Main Page */
+.surprise-page {
+  width: 100vw;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  padding-top: 100px;
+  padding-bottom: 40px;
+}
+
+/* Background Decorations */
+.background-decorations {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.decoration {
+  position: absolute;
+  animation: floatDecor 6s ease-in-out infinite;
+  opacity: 0.3;
+}
+
+@keyframes floatDecor {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(10deg);
+  }
+}
+
+/* Header */
+.surprise-header {
+  text-align: center;
+  color: white;
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 1;
+}
+
+.surprise-header h2 {
+  font-size: clamp(24px, 4vw, 40px);
+  margin-bottom: 8px;
+  text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+  font-size: clamp(14px, 1.5vw, 18px);
+  opacity: 0.9;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.all-revealed-text {
+  color: #ffd93d;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 8px;
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { 
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* Progress Bar */
+.progress-container {
+  position: sticky;
+  top: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 12px 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  max-width: 600px;
+  margin: 0 auto 25px;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #2d3436;
+  font-size: 14px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #dfe6e9;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff);
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+.progress-text {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 13px;
+  color: #636e72;
+  font-weight: 600;
+  animation: pulseText 2s ease-in-out infinite;
+}
+
+@keyframes pulseText {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* Cards Grid - ALWAYS VISIBLE */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+/* When success message is shown, blur the cards but keep them visible */
+.cards-grid.blurred {
+  filter: blur(3px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Success Message Overlay - ON TOP OF CARDS */
+.success-message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 20;
+  padding: 20px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.message-card {
+  background: white;
+  padding: 40px;
+  border-radius: 30px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+  animation: bounceIn 0.8s ease-out;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.message-card h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.message-content p {
+  font-size: 17px;
+  color: #2d3436;
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.special-text {
+  font-style: italic;
+  color: #636e72 !important;
+  font-size: 16px !important;
+}
+
+.birthday-wish {
+  font-size: 20px !important;
+  font-weight: bold;
+  margin: 15px 0 !important;
+}
+
+.highlight {
+  display: inline-block;
+  background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 22px;
+  margin: 0 2px;
+}
+
+/* Buttons */
+.finale-btn {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  color: white;
+  border: none;
+  padding: 14px 40px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.finale-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+}
+
+.reset-btn {
+  margin-top: 10px;
+  padding: 10px 30px;
+  background: transparent;
+  border: 2px solid #636e72;
+  border-radius: 50px;
+  color: #636e72;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+  background: #636e72;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Scrollbar styling */
+.surprise-page::-webkit-scrollbar {
+  width: 6px;
+}
+
+.surprise-page::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.surprise-page::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .surprise-page {
+    padding: 80px 10px 20px;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+
+  .message-card {
+    padding: 25px;
+  }
+
+  .message-card h2 {
+    font-size: 22px;
+  }
+
+  .birthday-wish {
+    font-size: 17px !important;
+  }
+
+  .highlight {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 10px;
+  }
+
+  .progress-container {
+    padding: 10px 15px;
+  }
+
+  .message-card {
+    padding: 20px;
+  }
+}
